@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: axonhub
+    runtime: docker
+    plan: free
+    envVars:
+      - key: AXONHUB_SERVER_PORT
+        value: 10000
+      - key: AXONHUB_DB_DIALECT
+        value: sqlite3
+      - key: AXONHUB_DB_DSN
+        value: "file:/data/axonhub.db?cache=shared&_fk=1"
+    disk:
+      name: axonhub-data
+      mountPath: /data
+      sizeGB: 1
